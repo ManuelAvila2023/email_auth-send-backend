@@ -12,18 +12,18 @@ router.route('/users/me')
     .get(verifyToken, userLogged); //protected    
 
 router.route('/users/login')
-.post(login);  //public
-
-router.route('/users/verify/:code')    
-    .get(verifyEmail); //public
-
+    .post(login);  //public
+    
+router.route('/users/reset_password')
+    .post(resetPassword); //public    
+    
 router.route('/users/:id')
     .get(verifyToken, getOne) //protected
     .put(verifyToken, update) //protected
     .delete(verifyToken, remove); //protected
-
-router.route('/users/reset_password')
-    .post(resetPassword); //public
+    
+router.route('/users/verify/:code')    
+    .get(verifyEmail); //public
 
 router.route('/users/reset_password/:code')
     .post(resetPasswordWithCode); //public
